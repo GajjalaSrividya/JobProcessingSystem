@@ -14,9 +14,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Jar') {
             steps {
                 sh 'mvn clean install'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t jobprocessor .'
             }
         }
 
